@@ -12,20 +12,21 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors());
 
-app.get('/', todoController.getTodos, (err, req, res, next) => {
+app.get('/todos', todoController.getTodos, (err, req, res, next) => {
   return res.status(200).send(res.locals.todos);
 });
 
-app.post('/', todoController.createTodo, (err, req, res, next) => {
+app.post('/todos', todoController.createTodo, (err, req, res, next) => {
+  console.log(req.body);
   return res.status(201).send(res.locals.newTodo);
 });
 
-app.put('/:id', todoController.editTodo, (err, req, res, next) => {
-  // edit a todo
+app.put('/todos/:id', todoController.editTodo, (err, req, res, next) => {
+  return res.status(200).send(res.locals.updatedTodo);
 });
 
-app.delete('/:id',todoController.deleteTodo, (err, req, res, next) => {
-  // delete a todo
+app.delete('/todos/:id',todoController.deleteTodo, (err, req, res, next) => {
+  res.status(200).send(res.locals.deletedTodo);
 });
 
 // catch-all route handler
@@ -44,7 +45,6 @@ app.use((err, req, res, next) => {
   const errorObj = Object.assign({}, defaultErr, err);
   return res.status(errorObj.status).json(errorObj.message);
 });
-
 
 
 mongoose

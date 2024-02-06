@@ -8,8 +8,8 @@ todoController.getTodos = async(req, res, next) => {
     cursorObj.forEach(doc => {
       cache.push(doc);
     });
-
     res.locals.todos = cache;
+    console.log(res.locals.todos);
     return next();
 
   } catch(error) {
@@ -20,8 +20,9 @@ todoController.getTodos = async(req, res, next) => {
 todoController.createTodo = async(req, res, next) => {
   try {
     const { name, category } = req.body;
+    console.log(name, category);
     const newTodo = await Todo.create({ name, category });
-
+    console.log(newTodo);
     res.locals.newTodo = newTodo;
     return next();
 
@@ -32,7 +33,9 @@ todoController.createTodo = async(req, res, next) => {
 
 todoController.editTodo = async(req, res, next) => {
   try {
-    // edit logic 
+    const { id } = req.params;
+    const updatedTodo = await Todo.findByIdAndUpdate(id, req.body);
+    res.locals.updatedTodo = updatedTodo;
     return next();
 
   } catch(error) {
@@ -42,7 +45,10 @@ todoController.editTodo = async(req, res, next) => {
 
 todoController.deleteTodo = async(req, res, next) => {
   try {
-    // delete logic 
+    const { id } = req.params;
+    const deletedTodo = await Todo.findByIdAndDelete(id, req.body);
+    res.locals.deletedTodo = deletedTodo;
+    
     return next();
 
   } catch(error) {
