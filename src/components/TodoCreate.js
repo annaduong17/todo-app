@@ -2,17 +2,17 @@ import { useState, useContext } from 'react';
 import TodosContext from '../context/todos';
 
 function TodoCreate() {
-  const [ todo, setTodo ] = useState({name: ''});
+  const [ todo, setTodo ] = useState('');
   const { createTodo } = useContext(TodosContext);
 
   const handleChange = (e) => {
-    setTodo({name: e.target.value});
+    setTodo(e.target.value);
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     createTodo(todo);
-    setTodo({});
+    setTodo('');
   }
 
   return (

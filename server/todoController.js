@@ -20,8 +20,8 @@ todoController.getTodos = async(req, res, next) => {
 
 todoController.createTodo = async(req, res, next) => {
   try {
-    const { name, category } = req.body;
-    const newTodo = await Todo.create({ name, category });
+    const { name } = req.body;
+    const newTodo = await Todo.create({ name });
     res.locals.newTodo = newTodo;
     return next();
 

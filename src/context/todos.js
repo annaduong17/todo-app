@@ -8,15 +8,16 @@ function Provider({ children }) {
 
   const fetchTodos = useCallback(async () => {
     const response = await axios.get('http://localhost:3434/todos');
-
+  
     setTodos(response.data);
   }, []);
 
-  const createTodo = async (name, category) => {
+  const createTodo = async (name) => {
     const response = await axios.post('http://localhost:3434/todos', {
-      name,
-      category
+      name
     });
+
+    console.log(response.data);
     const updatedTodos = [...todos, response.data];
 
     setTodos(updatedTodos);
@@ -25,7 +26,6 @@ function Provider({ children }) {
   const editTodo = async (id, newTodo) => {
     const response = await axios.put(`http://localhost:3434/todos/${id}`, {
       name: newTodo.name,
-      category: newTodo.category
     });
     const updatedTodos = todos.map(todo => {
       if (todo.id === id) {
