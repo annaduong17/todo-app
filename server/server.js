@@ -7,31 +7,36 @@ const todoController = require('./todoController.js');
 
 const app = express();
 
+app.use(cors({
+  origin: 'http://localhost:3000',
+  credentials: true,
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(cors());
 
-app.get('/todos', todoController.getTodos, (err, req, res, next) => {
+
+app.get('/todos', todoController.getTodos, (req, res) => {
   return res.status(200).send(res.locals.todos);
 });
 
-app.post('/todos', todoController.createTodo, (err, req, res, next) => {
+app.post('/todos', todoController.createTodo, (req, res) => {
   console.log(req.body);
   return res.status(201).send(res.locals.newTodo);
 });
 
-app.put('/todos/:id', todoController.editTodo, (err, req, res, next) => {
+app.put('/todos/:id', todoController.editTodo, (req, res) => {
   return res.status(200).send(res.locals.updatedTodo);
 });
 
-app.delete('/todos/:id',todoController.deleteTodo, (err, req, res, next) => {
+app.delete('/todos/:id',todoController.deleteTodo, (req, res) => {
   res.status(200).send(res.locals.deletedTodo);
 });
 
 // catch-all route handler
 app.use('*', (req, res) => {
-  res.status(404).send('Not found');
+  res.status(404).send('Page not found');
 });
 
 // global error handler
