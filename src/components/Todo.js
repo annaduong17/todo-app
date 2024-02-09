@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react';
 import TodosContext from '../context/todos';
+import TodoEdit from './TodoEdit';
 
 function Todo({ todo }) {
   const [ showEdit, setShowEdit ] = useState(false);
@@ -20,7 +21,7 @@ function Todo({ todo }) {
   return (
     <div>
       <input type="checkbox" />
-      <input type="text" value={todo.name} />
+      {showEdit ? <TodoEdit todo={todo} onSubmit={handleSubmit} /> : <p>{todo.name}</p>}
       <button onClick={handleEditClick}>Edit</button>
       <button onClick={handleDeleteClick}>Delete</button>
     </div>

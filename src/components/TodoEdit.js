@@ -1,24 +1,23 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import TodosContext from '../context/todos';
 
-function TodoEdit({ book, onSubmit }) {
-  const [ todo, setTodo ] = useStat(todo.name);
+function TodoEdit({ todo, onSubmit }) {
+  const [ newTodo, setNewTodo ] = useState(todo);
   const { editTodo } = useContext(TodosContext);
 
   const handleChange = (e) => {
-    setTodo(e.target.value)
+    setNewTodo({...todo, name: e.target.value})
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     onSubmit();
-    editTodo(todo.id, todo);
+    editTodo(todo._id, newTodo);
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" onChange={handleChange} value={todo} />
+      <input type="text" onChange={handleChange} value={newTodo.name} />
       <button>Save</button>
     </form>
   );

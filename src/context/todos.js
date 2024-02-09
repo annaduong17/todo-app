@@ -25,8 +25,10 @@ function Provider({ children }) {
   }
 
   const editTodo = async (id, newTodo) => {
-    const response = await axios.put(`http://localhost:3434/todos/${id}`, {
+    const response = await axios.put(`http://localhost:3434/todos/${id}`, { 
       name: newTodo.name,
+      isActive: newTodo.isActive,
+      isCompleted: newTodo.isCompleted
     });
     const updatedTodos = todos.map(todo => {
       if (todo.id === id) {
