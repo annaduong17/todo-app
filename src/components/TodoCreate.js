@@ -16,7 +16,7 @@ function TodoCreate() {
   const handleSubmit = (e) => {
     e.preventDefault();
     createTodo(todo);
-    setTodo('');
+    setTodo({...todo, name: ''});
   }
 
   return (
