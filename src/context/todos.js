@@ -11,11 +11,15 @@ function Provider({ children }) {
     console.log(newFilter);
     setFilter(newFilter);
   }
+
+  const handleClearCompleted = () => {
+    deleteTodos();
+  }
  
   const fetchTodos = useCallback(async () => {
     const response = await axios.get('http://localhost:3434/todos');
     setTodos(response.data);
-  }, [todos]);
+  });
 
   const createTodo = async (todo) => {
     const response = await axios.post('http://localhost:3434/todos', {
@@ -52,6 +56,19 @@ function Provider({ children }) {
     setTodos(updatedTodos);
   }
 
+  const deleteTodos = async () => {
+    const response = await axios.delete(`http://localhost:3434/todos`);
+
+    console.log(response.data);
+    // fetchTodos();
+
+    // const updatedTodos = response.data.filter(todo => {
+    //   return todo.id !== id;
+    // });
+
+    // setTodos(updatedTodos);
+  }
+
   const value = {
     todos, 
     fetchTodos,
@@ -59,6 +76,7 @@ function Provider({ children }) {
     editTodo,
     deleteTodo,
     filter,
+    handleClearCompleted,
     handleFilterChange,
   }
 

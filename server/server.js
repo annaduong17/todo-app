@@ -22,7 +22,6 @@ app.get('/todos', todoController.getTodos, (req, res) => {
 });
 
 app.post('/todos', todoController.createTodo, (req, res) => {
-  console.log(req.body);
   return res.status(201).send(res.locals.newTodo);
 });
 
@@ -33,6 +32,12 @@ app.put('/todos/:id', todoController.editTodo, (req, res) => {
 app.delete('/todos/:id',todoController.deleteTodo, (req, res) => {
   res.status(200).send(res.locals.deletedTodo);
 });
+
+app.delete('/todos', todoController.deleteTodos, (req, res) => {
+  res.status(200).send(res.locals.deletedTodos);
+});
+
+
 
 // catch-all route handler
 app.use('*', (req, res) => {
