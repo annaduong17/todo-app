@@ -7,7 +7,7 @@ function TodoList() {
 
   const renderedTodos = todos.map((todo) => {
     return (
-      <Todo key={todo.id} todo={todo} />
+      <Todo key={todo._id} todo={todo} />
     )
   })
 

@@ -2,11 +2,15 @@ import { useState, useContext } from 'react';
 import TodosContext from '../context/todos';
 
 function TodoCreate() {
-  const [ todo, setTodo ] = useState('');
+  const [ todo, setTodo ] = useState({
+    name: '',
+    isActive: true,
+    isCompleted: false
+  });
   const { createTodo } = useContext(TodosContext);
 
   const handleChange = (e) => {
-    setTodo(e.target.value);
+    setTodo({...todo, name: e.target.value});
   }
 
   const handleSubmit = (e) => {

@@ -6,7 +6,7 @@ import TodoList from './components/TodoList';
 import Stats from './components/Stats';
 
 function App() {
-  const { fetchTodos } = useContext(TodosContext);
+  const { fetchTodos, todos } = useContext(TodosContext);
 
   useEffect(() => {
     fetchTodos();

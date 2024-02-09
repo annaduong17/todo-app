@@ -6,7 +6,7 @@ function Todo({ todo }) {
   const { deleteTodo } = useContext(TodosContext);
 
   const handleDeleteClick = () => {
-    deleteTodo(todo.id);
+    deleteTodo(todo._id);
   }
 
   const handleEditClick = () => {

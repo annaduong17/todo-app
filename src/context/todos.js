@@ -10,14 +10,15 @@ function Provider({ children }) {
     const response = await axios.get('http://localhost:3434/todos');
   
     setTodos(response.data);
-  }, []);
+  }, [todos]);
 
-  const createTodo = async (name) => {
+  const createTodo = async (todo) => {
     const response = await axios.post('http://localhost:3434/todos', {
-      name
+      name: todo.name,
+      isActive: todo.isActive,
+      isCompleted: todo.isCompleted
     });
 
-    console.log(response.data);
     const updatedTodos = [...todos, response.data];
 
     setTodos(updatedTodos);
