@@ -1,11 +1,20 @@
+import { useContext } from 'react';
+import TodosContext from '../context/todos';
+
 function Stats() {
+  const { todos, handleFilterChange } = useContext(TodosContext);
+
+  const activeTodos = todos.filter(todo => {
+    return todo.isCompleted === false;
+  });
+
   return (
     <div>
-      <span>5 items left</span>
-      <button>All</button>
-      <button>Active</button>
-      <button>Completed</button>
-      <button>Clear Completed</button>
+      <span>{activeTodos.length} items left</span>
+      <button onClick={() => handleFilterChange('all')} >All</button>
+      <button onClick={() => handleFilterChange('active')} >Active</button>
+      <button onClick={() => handleFilterChange('completed')} >Completed</button>
+      <button onClick={() => handleFilterChange('clear completed')}>Clear Completed</button>
     </div>
   );
 }

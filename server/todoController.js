@@ -20,8 +20,8 @@ todoController.getTodos = async(req, res, next) => {
 
 todoController.createTodo = async(req, res, next) => {
   try {
-    const { name, isActive, isCompleted } = req.body;
-    const newTodo = await Todo.create({ name, isActive, isCompleted });
+    const { name, isCompleted } = req.body;
+    const newTodo = await Todo.create({ name, isCompleted });
     res.locals.newTodo = newTodo;
     return next();
 

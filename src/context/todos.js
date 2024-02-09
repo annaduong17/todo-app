@@ -5,7 +5,13 @@ const TodosContext = createContext();
 
 function Provider({ children }) {
   const [ todos, setTodos ] = useState([]);
+  const [ filter, setFilter ] = useState('all');
 
+  const handleFilterChange = (newFilter) => {
+    console.log(newFilter);
+    setFilter(newFilter);
+  }
+ 
   const fetchTodos = useCallback(async () => {
     const response = await axios.get('http://localhost:3434/todos');
     setTodos(response.data);
@@ -33,7 +39,7 @@ function Provider({ children }) {
       }
       return todo;
     });
-    console.log(updatedTodos);
+    
     setTodos(updatedTodos);
   }
 
@@ -51,7 +57,9 @@ function Provider({ children }) {
     fetchTodos,
     createTodo,
     editTodo,
-    deleteTodo
+    deleteTodo,
+    filter,
+    handleFilterChange,
   }
 
   return (

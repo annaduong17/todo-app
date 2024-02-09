@@ -6,12 +6,8 @@ function Todo({ todo }) {
   const [ showEdit, setShowEdit ] = useState(false);
   const { editTodo, deleteTodo } = useContext(TodosContext);
 
-  const handleCheckboxClick = (e) => {
-    if (e.target.checked) {
-      editTodo(todo._id, {...todo, isCompleted: true});
-    } else {
-      editTodo(todo._id, {...todo, isCompleted: false});
-    }
+  const handleCheckboxClick = () => {
+    editTodo(todo._id, {...todo, isCompleted: !todo.isCompleted});
   }
 
   const handleDeleteClick = () => {
