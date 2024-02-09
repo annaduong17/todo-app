@@ -8,14 +8,12 @@ function Provider({ children }) {
 
   const fetchTodos = useCallback(async () => {
     const response = await axios.get('http://localhost:3434/todos');
-  
     setTodos(response.data);
   }, [todos]);
 
   const createTodo = async (todo) => {
     const response = await axios.post('http://localhost:3434/todos', {
       name: todo.name,
-      isActive: todo.isActive,
       isCompleted: todo.isCompleted
     });
 
@@ -27,7 +25,6 @@ function Provider({ children }) {
   const editTodo = async (id, newTodo) => {
     const response = await axios.put(`http://localhost:3434/todos/${id}`, { 
       name: newTodo.name,
-      isActive: newTodo.isActive,
       isCompleted: newTodo.isCompleted
     });
     const updatedTodos = todos.map(todo => {
@@ -36,7 +33,7 @@ function Provider({ children }) {
       }
       return todo;
     });
-
+    console.log(updatedTodos);
     setTodos(updatedTodos);
   }
 

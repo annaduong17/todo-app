@@ -5,10 +5,6 @@ const todoSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  isActive: {
-    type: Boolean,
-    required: true,
-  },
   isCompleted: {
     type: Boolean,
     required: true
