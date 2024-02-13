@@ -17,8 +17,10 @@ function Provider({ children }) {
   }
  
   const fetchTodos = useCallback(async () => {
+
     const response = await axios.get('http://localhost:3434/todos');
     setTodos(response.data);
+
   });
 
   const createTodo = async (todo) => {
@@ -48,7 +50,8 @@ function Provider({ children }) {
   }
 
   const deleteTodo = async (id) => {
-    const response = await axios.delete(`http://localhost:3434/todos/${id}`);
+    await axios.delete(`http://localhost:3434/todos/${id}`);
+
     const updatedTodos = todos.filter(todo => {
       return todo.id !== id;
     });
@@ -57,16 +60,7 @@ function Provider({ children }) {
   }
 
   const deleteTodos = async () => {
-    const response = await axios.delete(`http://localhost:3434/todos`);
-
-    console.log(response.data);
-    // fetchTodos();
-
-    // const updatedTodos = response.data.filter(todo => {
-    //   return todo.id !== id;
-    // });
-
-    // setTodos(updatedTodos);
+    await axios.delete(`http://localhost:3434/todos`);
   }
 
   const value = {

@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import TodosContext from './context/todos';
 import Header from './components/Header';
 import TodoCreate from './components/TodoCreate';
