@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import TodosContext from '../context/todos';
 import Todo from "./Todo";
+import Stats from './Stats';
 
 function TodoList() {
   const { todos, filter } = useContext(TodosContext);
@@ -22,8 +23,9 @@ function TodoList() {
   })
 
   return (
-    <div>
+    <div className='todo-list'>
       {renderedTodos}
+      <Stats />
     </div>
   );
 }

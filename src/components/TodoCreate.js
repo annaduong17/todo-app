@@ -20,10 +20,9 @@ function TodoCreate() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="checkbox" />
-      <input onChange={handleChange} type="text" value={todo.name} />
-      <button>Add</button>
+    <form onSubmit={handleSubmit} className="todo-create flex-row">
+      <input required onChange={handleChange} type="text" value={todo.name} className="text-input flex-row"/>
+      <button className='add-btn'>Add</button>
     </form>
   );
 }

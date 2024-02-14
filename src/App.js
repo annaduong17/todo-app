@@ -13,14 +13,15 @@ function App() {
   }, [fetchTodos]);
 
   return (
-    <div>
-      <Header />
-      <TodoCreate />
-      <div>
-        <TodoList />
+    <div className='app-wrapper'>
+      <div className='app w-2/5 m-auto'>
+        <Header />
+        <TodoCreate />
+        <div>
+          <TodoList />
+        </div>
+        <p>Drag and drop to reorder list</p>
       </div>
-      <Stats />
-      <p>Drag and drop to reorder list</p>
     </div>
   );
 }

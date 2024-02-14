@@ -9,12 +9,18 @@ function Stats() {
   });
 
   return (
-    <div>
-      <span>{activeTodos.length} items left</span>
-      <button onClick={() => handleFilterChange('all')} >All</button>
-      <button onClick={() => handleFilterChange('active')} >Active</button>
-      <button onClick={() => handleFilterChange('completed')} >Completed</button>
-      <button onClick={handleClearCompleted}>Clear Completed</button>
+    <div className='stats flex-row justify-between align-center'>
+      <section>
+        <span>{activeTodos.length} items left</span>
+      </section>
+     <section>
+        <button onClick={() => handleFilterChange('all')} >All</button>
+        <button onClick={() => handleFilterChange('active')} >Active</button>
+        <button onClick={() => handleFilterChange('completed')} >Completed</button>
+     </section>
+      <section>
+        <button onClick={handleClearCompleted}>Clear Completed</button>
+      </section>
     </div>
   );
 }
