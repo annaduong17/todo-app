@@ -19,8 +19,8 @@ function TodoList() {
   const renderedTodos = filteredTodos.map((todo) => {
     return (
       <Todo key={todo._id} todo={todo} />
-    )
-  })
+    );
+  });
 
   return (
     <div className='todo-list'>

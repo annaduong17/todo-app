@@ -16,7 +16,7 @@ function TodoEdit({ todo, onSubmit }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='todo-edit flex-row justify-between align-center' onSubmit={handleSubmit}>
       <input type="text" onChange={handleChange} value={newTodo.name} />
       <button>Save</button>
     </form>

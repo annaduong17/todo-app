@@ -6,7 +6,7 @@ import TodoList from './components/TodoList';
 import Stats from './components/Stats';
 
 function App() {
-  const { fetchTodos } = useContext(TodosContext);
+  const { fetchTodos, todos } = useContext(TodosContext);
 
   useEffect(() => {
     fetchTodos();
@@ -17,9 +17,9 @@ function App() {
       <div className='app w-2/5 m-auto'>
         <Header />
         <TodoCreate />
-        <div>
+        {todos.length !== 0 && <div>
           <TodoList />
-        </div>
+        </div>}
         <p>Drag and drop to reorder list</p>
       </div>
     </div>

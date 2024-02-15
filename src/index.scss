@@ -26,9 +26,37 @@ $very-dark-gray-blue-2: hsl(237, 14%, 26%);
 
 body {
   font-family: 'Josefin Sans', sans-serif;
-  font-size: 18px;
+  font-size: 16px;
+  color: $very-dark-gray-blue;
+}
+
+button {
+  all: initial;
+  cursor: pointer;
+  font-family: 'Josefin Sans', sans-serif;
+
+  &:active {
+    color: $bright-blue;
+  }
+}
+
+input {
+  all: initial;
+  font-family: 'Josefin Sans', sans-serif;
+  color: $very-dark-gray-blue;
+  padding-left: 20px;
+
+  &:focus {
+    font-family: 'Josefin Sans', sans-serif;
+    color: $very-dark-gray-blue;
+    padding-left: 20px;
+  }
+}
+
+svg {
   color: $dark-gray-blue;
 }
+
 
 .flex-row {
   display: flex;
@@ -58,11 +86,11 @@ body {
   // border: 1px solid black;
   width: 500px;
   margin-inline: auto;
-  margin-top: 50px;
 }
 
 .header {
-  margin-bottom: 50px;
+  margin-bottom: 10px;
+
   h1 {
     font-family: 'Josefin Sans', sans-serif;
     letter-spacing: 1.5rem;
@@ -73,16 +101,18 @@ body {
 }
 
 .todo-create {
+  height: 50px;
   background-color: white;
   margin-bottom: 20px;
-  border-radius: 10px;  
+  border-radius: 5px;  
 
   .text-input {
-    border-radius: 5px;
+    border-radius: 5px 0 0 5px;
     flex-grow: 1;
   }
 
   .add-btn {
+    border: none;
     color: white;
     background: linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
     padding: 10px 20px;
@@ -96,12 +126,13 @@ body {
   margin-bottom: 30px;
 }
 
-.todo {
-  height: 65px;
+.todo,
+.todo-edit {
+  height: 55px;
   background-color: white;
   border-bottom: 1px solid $light-gray-blue;
 
-  &:first-child {
+  &:first-of-type {
     border-radius: 5px 5px 0 0;
   }
 
@@ -122,8 +153,8 @@ body {
     width: 25px;
     height: 25px;
     position: absolute;
-    top: 0;
-    left: 15px;
+    top: 12px;
+    left: 18px;
   }
   
   .round label:after {
@@ -153,7 +184,21 @@ body {
   }  
 
   p {
-    margin-left: 40px;
+    margin-left: 45px;
+  }
+}
+
+
+
+.todo-edit {
+  input {
+    flex-grow: 1;
+    margin-left: 45px;
+  }
+
+  button {
+    color: $dark-gray-blue;
+    padding-inline: 20px;
   }
 }
 
@@ -162,11 +207,17 @@ body {
 }
 
 .stats {
-  font-size: 0.75rem;
-  color: $light-gray-blue;
+  background-color: white;
+  border-radius: 0 0 5px 5px;
+  button.active {
+    color: $bright-blue;
+  }
+
   padding-inline: 10px;
 
   * {
+    font-size: 0.75rem;
+    color: $dark-gray-blue;
     padding: 5px 10px;
   }
 }

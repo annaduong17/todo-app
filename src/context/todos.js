@@ -8,7 +8,6 @@ function Provider({ children }) {
   const [ filter, setFilter ] = useState('all');
 
   const handleFilterChange = (newFilter) => {
-    console.log(newFilter);
     setFilter(newFilter);
   }
 
