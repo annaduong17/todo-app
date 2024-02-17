@@ -3,7 +3,7 @@ import TodosContext from '../context/todos';
 
 function TodoEdit({ todo, onSubmit }) {
   const [ newTodo, setNewTodo ] = useState(todo);
-  const { editTodo } = useContext(TodosContext);
+  const { editTodo, darkTheme } = useContext(TodosContext);
 
   const handleChange = (e) => {
     setNewTodo({...todo, name: e.target.value})
@@ -16,7 +16,7 @@ function TodoEdit({ todo, onSubmit }) {
   }
 
   return (
-    <form className='todo-edit flex-row justify-between align-center' onSubmit={handleSubmit}>
+    <form className={`todo-edit flex-row justify-between align-center ${darkTheme ? "dark-theme" : ""}`} onSubmit={handleSubmit}>
       <input type="text" onChange={handleChange} value={newTodo.name} />
       <button>Save</button>
     </form>

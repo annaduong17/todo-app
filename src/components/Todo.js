@@ -4,7 +4,7 @@ import TodoEdit from './TodoEdit';
 
 function Todo({ todo }) {
   const [ showEdit, setShowEdit ] = useState(false);
-  const { editTodo, deleteTodo } = useContext(TodosContext);
+  const { editTodo, deleteTodo, darkTheme } = useContext(TodosContext);
 
   const handleCheckboxClick = () => {
     editTodo(todo._id, {...todo, isCompleted: !todo.isCompleted});
@@ -23,12 +23,12 @@ function Todo({ todo }) {
   }
 
   return (
-    <div className='todo'>
+    <div className={`todo ${darkTheme ? "dark-theme" : ""}`}>
       {showEdit? <TodoEdit todo={todo} onSubmit={handleSubmit}/> : <div className='align-center flex-row justify-between'>
       <section className='flex-row align-center'>
        <div className="round">
           <input id={todo._id} type="checkbox" checked={todo.isCompleted} readOnly/>
-          <label onClick={handleCheckboxClick} htmlFor={todo._id}></label>
+          <label onClick={handleCheckboxClick} htmlFor={todo._id} className={`${darkTheme ? "dark-theme": ""}`}></label>
         </div>
         <p className={todo.isCompleted ? "completed" : ""}>{todo.name}</p>
       </section>

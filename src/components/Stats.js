@@ -2,14 +2,14 @@ import { useContext } from 'react';
 import TodosContext from '../context/todos';
 
 function Stats() {
-  const { todos, handleClearCompleted, handleFilterChange, filter } = useContext(TodosContext);
+  const { todos, handleClearCompleted, handleFilterChange, filter, darkTheme } = useContext(TodosContext);
 
   const activeTodos = todos.filter(todo => {
     return todo.isCompleted === false;
   });
 
   return (
-    <div className='stats flex-row justify-between align-center'>
+    <div className={`stats flex-row justify-between align-center ${darkTheme ? "dark-theme" : ""}`}>
       <section>
         <span>{activeTodos.length} items left</span>
       </section>

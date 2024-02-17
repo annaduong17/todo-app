@@ -4,7 +4,7 @@ import Todo from "./Todo";
 import Stats from './Stats';
 
 function TodoList() {
-  const { todos, filter } = useContext(TodosContext);
+  const { todos, filter, darkTheme } = useContext(TodosContext);
 
   const filteredTodos = todos.filter(todo => {
     if (filter === 'active') {
@@ -23,7 +23,7 @@ function TodoList() {
   });
 
   return (
-    <div className='todo-list'>
+    <div className={`todo-list ${darkTheme ? "dark-theme" : ""}`}>
       {renderedTodos}
       <Stats />
     </div>

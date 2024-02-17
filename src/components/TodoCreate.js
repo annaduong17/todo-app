@@ -7,7 +7,7 @@ function TodoCreate() {
     isActive: true,
     isCompleted: false
   });
-  const { createTodo } = useContext(TodosContext);
+  const { createTodo, darkTheme } = useContext(TodosContext);
 
   const handleChange = (e) => {
     setTodo({...todo, name: e.target.value});
@@ -20,7 +20,7 @@ function TodoCreate() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="todo-create flex-row">
+    <form onSubmit={handleSubmit} className={`todo-create flex-row ${darkTheme ? "dark-theme" : ""}`}>
       <input required onChange={handleChange} type="text" value={todo.name} className="text-input flex-row"/>
       <button className='add-btn'>Add</button>
     </form>

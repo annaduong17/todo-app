@@ -23,7 +23,6 @@ $very-dark-gray-blue-2: hsl(237, 14%, 26%);
 body {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 16px;
-  color: $very-dark-gray-blue;
   margin: 0;
 }
 
@@ -74,18 +73,26 @@ input {
   background-repeat: no-repeat;
   padding-top: 50px;
   margin-inline: auto;
+  color: $very-dark-gray-blue;
 
   &.dark-theme {
     background-image: url('../public/images/bg-desktop-dark.jpg');
     background-color: $very-dark-blue;
+    color: $very-light-gray;
+
+    p.dragndrop {
+      color: $very-dark-gray-blue;
+    }
   }
 }
 
 .app {
   width: 500px;
   margin-inline: auto;
+  
 
   p.dragndrop {
+    font-size: 0.75rem;
     text-align: center;
     margin-block: 50px;
   }
@@ -101,13 +108,34 @@ input {
     font-size: 2.5rem;
     font-weight: 700;
   }
+
+  svg {
+    transition: transform 0.3s ease;
+  }
+
+  button:hover svg {
+    transform: scale(1.25);
+  }
+  
 }
 
 .todo-create {
   height: 50px;
   background-color: white;
   margin-bottom: 20px;
-  border-radius: 5px;  
+  border-radius: 5px; 
+  
+  &.dark-theme {
+    background-color: $very-dark-desat-blue;
+
+    .text-input {
+      color: $very-light-gray;
+    }
+
+    .add-btn:hover {
+      background: $light-gray-blue;
+    }
+  }
 
   .text-input {
     border-radius: 5px 0 0 5px;
@@ -131,13 +159,26 @@ input {
   border-radius: 5px;
   box-shadow: 1px 15px 15px 1px $very-light-gray-blue;
   margin-bottom: 30px;
+
+  &.dark-theme {
+    box-shadow: none;
+  }
 }
 
 .todo,
 .todo-edit {
   height: 55px;
   background-color: white;
-  border-bottom: 1px solid $light-gray-blue;
+  border-bottom: 1px solid $very-light-gray-blue;
+
+  &.dark-theme {
+    background-color: $very-dark-desat-blue;
+    border-bottom: 1px solid $very-dark-gray-blue;
+
+    .completed {
+      color: $very-dark-gray-blue;
+    }
+  }
 
   div:first-of-type {
     height: 100%;
@@ -166,6 +207,10 @@ input {
     position: absolute;
     top: -5px;
     left: 18px;
+
+    &.dark-theme {
+      background-color: $very-dark-desat-blue;
+    }
   }
   
   .round label:after {
@@ -232,6 +277,10 @@ input {
 .stats {
   background-color: white;
   border-radius: 0 0 5px 5px;
+
+  &.dark-theme {
+    background-color: $very-dark-desat-blue;
+  }
 
   button:hover {
     color: $light-gray-blue;
