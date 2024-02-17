@@ -25,7 +25,7 @@ function Todo({ key, todo }) {
   return (
     <div className='todo'>
       {showEdit? <TodoEdit todo={todo} onSubmit={handleSubmit}/> : <div className='align-center flex-row justify-between'>
-      <section className='flex-row'>
+      <section className='flex-row align-center'>
        <div className="round">
           <input id={key}  type="checkbox" checked={todo.isCompleted}/>
           <label onClick={handleCheckboxClick} htmlFor={key}></label>

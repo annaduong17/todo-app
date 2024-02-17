@@ -20,7 +20,7 @@ function App() {
         {todos.length !== 0 && <div>
           <TodoList />
         </div>}
-        <p>Drag and drop to reorder list</p>
+        <p className='dragndrop'>Drag and drop to reorder list</p>
       </div>
     </div>
   );
