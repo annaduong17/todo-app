@@ -24,6 +24,7 @@ body {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 16px;
   color: $very-dark-gray-blue;
+  margin: 0;
 }
 
 button {
@@ -67,14 +68,20 @@ input {
 
 
 .app-wrapper {
-  min-height: 200px;
+  max-width: 1440px;
+  height: 100dvh;
   background-image: url('../public/images/bg-desktop-light.jpg');
   background-repeat: no-repeat;
   padding-top: 50px;
+  margin-inline: auto;
+
+  &.dark-theme {
+    background-image: url('../public/images/bg-desktop-dark.jpg');
+    background-color: $very-dark-blue;
+  }
 }
 
 .app {
-  // border: 1px solid black;
   width: 500px;
   margin-inline: auto;
 

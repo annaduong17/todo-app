@@ -3,18 +3,17 @@ import TodosContext from './context/todos';
 import Header from './components/Header';
 import TodoCreate from './components/TodoCreate';
 import TodoList from './components/TodoList';
-import Stats from './components/Stats';
 
 function App() {
-  const { fetchTodos, todos } = useContext(TodosContext);
+  const { fetchTodos, todos, darkTheme } = useContext(TodosContext);
 
   useEffect(() => {
     fetchTodos();
   }, [fetchTodos]);
 
   return (
-    <div className='app-wrapper'>
-      <div className='app w-2/5 m-auto'>
+    <div className={`app-wrapper ${darkTheme ? "dark-theme" : ""}`}>
+      <div className={`app ${darkTheme ? "dark-theme" : ""}`}>
         <Header />
         <TodoCreate />
         {todos.length !== 0 && <div>

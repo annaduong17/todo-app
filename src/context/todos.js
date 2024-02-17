@@ -6,6 +6,11 @@ const TodosContext = createContext();
 function Provider({ children }) {
   const [ todos, setTodos ] = useState([]);
   const [ filter, setFilter ] = useState('all');
+  const [ darkTheme, setDarkTheme ] = useState(false);
+
+  const toggleTheme = () => {
+    setDarkTheme(prev => !prev);
+  }
 
   const handleFilterChange = (newFilter) => {
     setFilter(newFilter);
@@ -71,6 +76,8 @@ function Provider({ children }) {
     filter,
     handleClearCompleted,
     handleFilterChange,
+    darkTheme,
+    toggleTheme
   }
 
   return (
