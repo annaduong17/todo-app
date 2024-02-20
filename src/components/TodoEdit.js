@@ -1,19 +1,8 @@
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import TodosContext from '../context/todos';
 
-function TodoEdit({ todo, onSubmit }) {
-  const [ newTodo, setNewTodo ] = useState(todo);
-  const { editTodo, darkTheme } = useContext(TodosContext);
-
-  const handleChange = (e) => {
-    setNewTodo({...todo, name: e.target.value})
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSubmit();
-    editTodo(todo._id, newTodo);
-  }
+function TodoEdit({ newTodo, handleChange, handleSubmit }) {
+  const { darkTheme } = useContext(TodosContext);
 
   return (
     <form className={`todo-edit flex-row justify-between align-center ${darkTheme ? "dark-theme" : ""}`} onSubmit={handleSubmit}>

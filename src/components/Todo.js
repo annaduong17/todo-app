@@ -4,9 +4,11 @@ import TodoEdit from './TodoEdit';
 
 function Todo({ todo }) {
   const [ showEdit, setShowEdit ] = useState(false);
+  const [ newTodo, setNewTodo ] = useState(todo);
   const { editTodo, deleteTodo, darkTheme } = useContext(TodosContext);
 
   const handleCheckboxClick = () => {
+    setNewTodo(prevTodo => ({...prevTodo, isCompleted: !prevTodo.isCompleted}))
     editTodo(todo._id, {...todo, isCompleted: !todo.isCompleted});
   }
 
@@ -18,19 +20,25 @@ function Todo({ todo }) {
     setShowEdit(!showEdit);
   }
 
-  const handleSubmit = () => {
+  const handleChange = (e) => {
+    setNewTodo(prev => ({...prev, name: e.target.value}));
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
     setShowEdit(false);
+    editTodo(todo._id, newTodo);
   }
 
   return (
     <div className={`todo ${darkTheme ? "dark-theme" : ""}`}>
-      {showEdit? <TodoEdit todo={todo} onSubmit={handleSubmit}/> : <div className='align-center flex-row justify-between'>
+      {showEdit? <TodoEdit todo={todo} newTodo={newTodo} handleChange={handleChange} handleSubmit={handleSubmit}/> : <div className='align-center flex-row justify-between'>
       <section className='flex-row align-center'>
        <div className="round">
-          <input id={todo._id} type="checkbox" checked={todo.isCompleted} readOnly/>
+          <input id={todo._id} type="checkbox" checked={newTodo.isCompleted} readOnly/>
           <label onClick={handleCheckboxClick} htmlFor={todo._id} className={`${darkTheme ? "dark-theme": ""}`}></label>
         </div>
-        <p className={todo.isCompleted ? "completed" : ""}>{todo.name}</p>
+        <p className={newTodo.isCompleted ? "completed" : ""}>{newTodo.name}</p>
       </section>
       <section>
         <button onClick={handleEditClick}>

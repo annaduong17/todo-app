@@ -25,7 +25,7 @@ function Provider({ children }) {
     const response = await axios.get('http://localhost:3434/todos');
     setTodos(response.data);
 
-  });
+  }, []);
 
   const createTodo = async (todo) => {
     const response = await axios.post('http://localhost:3434/todos', {
