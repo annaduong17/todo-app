@@ -33,38 +33,28 @@ function Provider({ children }) {
       isCompleted: todo.isCompleted
     });
 
-    const updatedTodos = [...todos, response.data];
-
-    setTodos(updatedTodos);
+    setTodos(prevTodos => [...prevTodos, response.data]);
   }
 
   const editTodo = async (id, newTodo) => {
-    const response = await axios.put(`http://localhost:3434/todos/${id}`, { 
+    await axios.put(`http://localhost:3434/todos/${id}`, { 
       name: newTodo.name,
       isCompleted: newTodo.isCompleted
     });
-    const updatedTodos = todos.map(todo => {
-      if (todo.id === id) {
-        return {...todo, ...response.data};
-      }
-      return todo;
-    });
-    
-    setTodos(updatedTodos);
+
+    setTodos(prevTodos => prevTodos.map(todo => todo._id === id ? {...todo, ...newTodo} : todo));
   }
 
   const deleteTodo = async (id) => {
     await axios.delete(`http://localhost:3434/todos/${id}`);
 
-    const updatedTodos = todos.filter(todo => {
-      return todo.id !== id;
-    });
-
-    setTodos(updatedTodos);
+    setTodos(prevTodos => prevTodos.filter(todo => todo._id !== id));
   }
 
   const deleteTodos = async () => {
     await axios.delete(`http://localhost:3434/todos`);
+
+    setTodos(prevTodos => prevTodos.filter(todo => !todo.isCompleted));
   }
 
   const value = {
