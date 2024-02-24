@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect, useRef } from 'react';
 import TodosContext from '../context/todos';
 
 function TodoCreate() {
@@ -8,6 +8,7 @@ function TodoCreate() {
     isCompleted: false
   });
   const { createTodo, darkTheme } = useContext(TodosContext);
+  const inputRef = useRef(null);
 
   const handleChange = (e) => {
     setTodo({...todo, name: e.target.value});
@@ -19,9 +20,13 @@ function TodoCreate() {
     setTodo({...todo, name: ''});
   }
 
+  useEffect(() => {
+    inputRef.current.focus();
+  });
+
   return (
     <form onSubmit={handleSubmit} className={`todo-create flex-row ${darkTheme ? "dark-theme" : ""}`}>
-      <input required onChange={handleChange} type="text" value={todo.name} className="text-input flex-row" placeholder='Create new todo...'/>
+      <input ref={inputRef} required onChange={handleChange} type="text" value={todo.name} className="text-input flex-row" placeholder='Create new todo...'/>
       <button className='add-btn'>Add</button>
     </form>
   );
