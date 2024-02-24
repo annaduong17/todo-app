@@ -278,6 +278,10 @@ input {
   button {
     color: $dark-gray-blue;
     padding-inline: 20px;
+
+    &:hover {
+      color: $very-dark-gray-blue;
+    }
   }
 }
 
