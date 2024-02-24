@@ -123,10 +123,18 @@ input {
   height: 50px;
   background-color: white;
   margin-bottom: 20px;
-  border-radius: 5px; 
+  border-radius: 5px;
+  
+  input::placeholder {
+    color: $light-gray-blue;
+  }
   
   &.dark-theme {
     background-color: $very-dark-desat-blue;
+
+    input::placeholder {
+      color: $very-dark-gray-blue;
+    }
 
     .text-input {
       color: $very-light-gray;

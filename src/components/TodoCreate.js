@@ -21,7 +21,7 @@ function TodoCreate() {
 
   return (
     <form onSubmit={handleSubmit} className={`todo-create flex-row ${darkTheme ? "dark-theme" : ""}`}>
-      <input required onChange={handleChange} type="text" value={todo.name} className="text-input flex-row"/>
+      <input required onChange={handleChange} type="text" value={todo.name} className="text-input flex-row" placeholder='Create new todo...'/>
       <button className='add-btn'>Add</button>
     </form>
   );
